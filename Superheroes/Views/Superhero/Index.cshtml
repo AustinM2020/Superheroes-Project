@@ -1,6 +1,8 @@
 ﻿
 @model List<Superheroes.Models.Superhero>
-    ViewData["Title"] = "Index";
+
+@{    
+    ViewData["Title"] = "Superheroes";
 }
 
 <h1>Superheroes</h1>
@@ -8,6 +10,6 @@
 @foreach(var hero in Model)
 {
     <div>
-        <h4>@hero.Name</h4>
+        <h4><a href="Details/@hero.Id">@hero.Name</a></h4>  
     </div>
 }
