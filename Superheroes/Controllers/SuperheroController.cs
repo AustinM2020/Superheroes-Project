@@ -30,7 +30,7 @@ namespace Superheroes.Controllers
         {
             _context.Add(superhero);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         public IActionResult Details(int Id = 0)
         {

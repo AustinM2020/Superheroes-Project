@@ -6,10 +6,16 @@
 }
 
 <h1>Superheroes</h1>
+<div class="row">
+    <div class="col-md-6">
+        @foreach (var hero in Model)
+        {
 
-@foreach(var hero in Model)
-{
-<div>
-    @Html.ActionLink(hero.Name, "Details", new { id = hero.Id })
+            @Html.ActionLink(hero.Name, "Details", new { id = hero.Id }, new { Style = "color:black;font-size:30px;padding:1px;background-color:#F0F8FF;border-radius:5px;" })<br />
+        }
+    </div>
+    <div class="col-md-6">
+        <h1>The best Superhero</h1>
+        <img id="Thor" src="~/img/Thor.jpg" alt="Thor" style="width:350px;height:250px;" />
+    </div>
 </div>
-}
