@@ -9,7 +9,7 @@
 
 @foreach(var hero in Model)
 {
-    <div>
-        <h4><a href="Details/@hero.Id">@hero.Name</a></h4>  
-    </div>
+<div>
+    @Html.ActionLink(hero.Name, "Details", new { id = hero.Id })
+</div>
 }

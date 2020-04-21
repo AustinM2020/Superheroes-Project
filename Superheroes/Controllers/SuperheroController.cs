@@ -37,5 +37,37 @@ namespace Superheroes.Controllers
             Superhero superhero = _context.Superheroes.Find(Id);
             return View(superhero);
         }
+        public IActionResult Edit(int id = 0)
+        {
+            Superhero superhero = _context.Superheroes.Find(id);
+            return View(superhero);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([Bind("Id,Name,AlterEgo,PrimaryAbility,SecondaryAbility,CatchPhrase")] Superhero superhero)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(superhero).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
+            }
+            return View(superhero);
+        }
+        public IActionResult Delete(int id = 0)
+        {
+            Superhero superhero = _context.Superheroes.Find(id);
+            return View(superhero);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            Superhero superhero = _context.Superheroes.Find(id);
+            _context.Remove(superhero);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
